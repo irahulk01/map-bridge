@@ -1,8 +1,31 @@
 @import "tailwindcss";
 
 :root {
+  /* Light Mode - Professional & Clean */
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #09090b; /* Zinc 950 */
+  --card-bg: #ffffff;
+  --card-border: #e4e4e7; /* Zinc 200 */
+  --input-bg: #f4f4f5; /* Zinc 100 */
+  --secondary: #71717a; /* Zinc 500 */
+  --accent: #2563eb; /* Blue 600 - Professional Blue */
+  
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.dark {
+  /* Dark Mode - Matte & Serious */
+  --background: #09090b; /* Zinc 950 - Deep Matte Black */
+  --foreground: #fafafa; /* Zinc 50 */
+  --card-bg: #18181b; /* Zinc 900 */
+  --card-border: #27272a; /* Zinc 800 */
+  --input-bg: #27272a; /* Zinc 800 */
+  --secondary: #a1a1aa; /* Zinc 400 */
+  --accent: #3b82f6; /* Blue 500 */
+  
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.5);
 }
 
 @theme inline {
@@ -12,15 +35,31 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Matte Design Utilities */
+@layer utilities {
+  .matte-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .matte-input {
+    background-color: var(--input-bg);
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+  }
+  
+  .matte-input:focus-within {
+    border-color: var(--accent);
+    background-color: transparent; 
+    box-shadow: 0 0 0 2px var(--input-bg); /* Ring effect */
+  }
 }
