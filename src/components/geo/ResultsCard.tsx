@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import { Sparkles, Check, Copy } from "lucide-react";
 import { cn } from "../../lib/utils";
 import { Coordinates } from "../../lib/geo-utils";
@@ -19,7 +19,7 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
 }) => {
   const letters = Array.from(text);
 
-  const container = {
+  const container: Variants = {
     hidden: { opacity: 0 },
     visible: (i = 1) => ({
       opacity: 1,
@@ -27,7 +27,7 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
     }),
   };
 
-  const child = {
+  const child: Variants = {
     visible: {
       opacity: 1,
       y: 0,
@@ -146,26 +146,26 @@ export const ResultsCard: React.FC<ResultsCardProps> = ({
           </div>
         </div>
 
-        {/* BUTTON (NOW IN NEXT LINE) */}
+        {/* BUTTON */}
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={onCopy}
           className={cn(
             `
-    w-fit
-    self-center
-    px-6 py-4 sm:px-8 sm:py-5
-    rounded-2xl
-    flex items-center justify-center gap-3
-    font-semibold transition-all duration-300
-    text-xs sm:text-sm
-    tracking-wide uppercase
-    cursor-pointer
-    `,
+            w-fit
+            self-center
+            px-6 py-4 sm:px-8 sm:py-5
+            rounded-2xl
+            flex items-center justify-center gap-3
+            font-semibold transition-all duration-300
+            text-xs sm:text-sm
+            tracking-wide uppercase
+            cursor-pointer
+            `,
             copied
               ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shadow-[0_0_20px_rgba(16,185,129,0.2)]"
-              : "bg-blue-600 hover:bg-blue-500 text-white shadow-xl shadow-blue-600/30 hover:shadow-blue-500/50",
+              : "bg-blue-600 hover:bg-blue-500 text-white shadow-xl shadow-blue-600/30 hover:shadow-blue-500/50"
           )}
         >
           <AnimatePresence mode="wait" initial={false}>
