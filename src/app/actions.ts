@@ -26,8 +26,8 @@ export async function expandUrl(url: string): Promise<ExpansionResult> {
     const expandedUrl = response.url;
 
     // Check if expandedUrl already has coordinates
-    // Matches: !3d..., !4d..., @lat,lng, q=lat,lng, center=lat,lng
-    const hasCoords = expandedUrl.match(/!3d|!4d|@[-\d.]+,[-\d.]+|[?&]q=[-\d.]+,[-\d.]+|[?&]center=[-\d.]+,[-\d.]+/);
+    // Matches: !3d..., !4d..., @lat,lng, q=lat,lng, center=lat,lng, /search/lat,lng, ll=lat,lng, mlat=..., cp=...
+    const hasCoords = expandedUrl.match(/!3d|!4d|@[-\d.]+,[-\d.]+|[?&]q=[-\d.]+,[-\d.]+|[?&]center=[-\d.]+,[-\d.]+|\/search\/[-\d.]+[,\s+]+[-\d.]+|[?&]ll=[-\d.]+,[-\d.]+|[?&]mlat=[-\d.]+|[?&]cp=[-\d.]+/);
 
     if (hasCoords) {
       return {
