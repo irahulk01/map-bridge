@@ -1,31 +1,46 @@
+
 @import "tailwindcss";
 
 :root {
-  /* Light Mode - Professional & Clean */
-  --background: #ffffff;
-  --foreground: #09090b; /* Zinc 950 */
+  /* Default dark mode black and blue theme as requested */
+  --background: #000000;
+  --foreground: #ffffff;
+  --card-bg: #111111;
+  --card-border: #1e3a8a; /* Dark Blue Border */
+  --input-bg: #111111;
+  --secondary: #60a5fa; /* Light Blue for secondary text */
+  --accent: #3b82f6; /* Blue 500 */
+  
+  --shadow-sm: 0 1px 2px 0 rgb(59 130 246 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(59 130 246 / 0.2), 0 2px 4px -2px rgb(59 130 246 / 0.2);
+}
+
+.light {
+  /* Keeping light mode just in case, but mapped to blueish tones */
+  --background: #f0f9ff;
+  --foreground: #0f172a;
   --card-bg: #ffffff;
-  --card-border: #e4e4e7; /* Zinc 200 */
-  --input-bg: #f4f4f5; /* Zinc 100 */
-  --secondary: #71717a; /* Zinc 500 */
-  --accent: #2563eb; /* Blue 600 - Professional Blue */
+  --card-border: #bfdbfe;
+  --input-bg: #f8fafc;
+  --secondary: #64748b;
+  --accent: #2563eb;
   
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
 
 .dark {
-  /* Dark Mode - Matte & Serious */
-  --background: #09090b; /* Zinc 950 - Deep Matte Black */
-  --foreground: #fafafa; /* Zinc 50 */
-  --card-bg: #18181b; /* Zinc 900 */
-  --card-border: #27272a; /* Zinc 800 */
-  --input-bg: #27272a; /* Zinc 800 */
-  --secondary: #a1a1aa; /* Zinc 400 */
-  --accent: #3b82f6; /* Blue 500 */
+  /* Explicit dark mode override */
+  --background: #000000;
+  --foreground: #ffffff;
+  --card-bg: #0a0a0a;
+  --card-border: #1e3a8a;
+  --input-bg: #171717;
+  --secondary: #60a5fa;
+  --accent: #3b82f6;
   
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.5);
+  --shadow-sm: 0 1px 2px 0 rgb(59 130 246 / 0.1);
+  --shadow-md: 0 0 15px -3px rgb(59 130 246 / 0.3);
 }
 
 @theme inline {
@@ -53,13 +68,13 @@ body {
   
   .matte-input {
     background-color: var(--input-bg);
-    border: 1px solid transparent;
-    transition: all 0.2s ease;
+    border: 1px solid var(--card-border);
+    transition: all 0.3s ease;
   }
   
   .matte-input:focus-within {
     border-color: var(--accent);
-    background-color: transparent; 
-    box-shadow: 0 0 0 2px var(--input-bg); /* Ring effect */
+    background-color: var(--input-bg);
+    box-shadow: 0 0 15px -3px var(--accent); /* Blue glow */
   }
 }
